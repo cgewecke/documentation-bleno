@@ -179,7 +179,7 @@ function buildSync(indexes, options) {
   var parseFn = (options.polyglot) ? polyglot : parseJavaScript;
 
   var buildPipeline = pipeline(
-    //inferName(),
+    inferName(),
     //inferAccess(options.inferPrivate),
     //inferAugments(),
     //inferKind(),
