@@ -14,7 +14,7 @@ $ npm install -g https://github.com/cgewecke/documentation-bleno
 [Gulp integration](https://github.com/cgewecke/gulp-documentation-bleno)
 
 ```
-$ npm install --save-devhttps://github.com/cgewecke/gulp-documentation-bleno
+$ npm install --save-dev https://github.com/cgewecke/gulp-documentation-bleno
 ```
 
 ### Input
