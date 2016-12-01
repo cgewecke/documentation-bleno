@@ -1,4 +1,4 @@
-# documentation
+# documentation-bleno
 
 **[documentationjs](https://github.com/documentationjs/documentation) hacked to generate docs for bleno characteristics**
 
