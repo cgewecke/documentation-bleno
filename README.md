@@ -1,19 +1,19 @@
 # documentation
 
 **[documentationjs](https://github.com/documentationjs/documentation) hacked to generate docs for bleno characteristics**
-Suppresses parameters and everything else. . . .
 
 + Ignores any comment without an `@bleno` tag. 
++ Ignores all tags except `@bleno` and `@property`
 + Expects `@bleno` description to be the handler title. 
 + Expects everything else to follow documentationjs's pattern for the `@property` tag.
 
 ## Install
 ```
-$ npm install -g https://github.com/cgewecke/documentation-bleno
+$ npm install -g --save-dev https://github.com/cgewecke/documentation-bleno
 ```
 
 ### Input
-```
+```javascript
 /**
  Responds w/ small subset of web3 data about a transaction. Useful for determining whether
  or not a transaction has been mined. (blockNumber field of response will be null if tx is
@@ -27,9 +27,21 @@ $ npm install -g https://github.com/cgewecke/documentation-bleno
  @property {Public} Access
  @property {No} Encrypted
 */
+const onGetTxStatus = function (data, offset, response, callback) {
+  const self = defs.getTxStatusCharacteristic
+  const req = util.parseTxHash(data)
+
+  if (req.ok) {
+    eth.getTx(req.val)
+      .then(txStatus => respondAndDisconnect(self, callback, txStatus))
+      .catch(e => respondAndDisconnect(self, callback, null))
+  } else {
+    errorAndDisconnect(callback, req.val)
+  }
+}
 ```
 
-Produces . . . 
+### Output
 
 # getTxStatus
 
